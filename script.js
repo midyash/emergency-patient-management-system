@@ -1,5 +1,5 @@
 
-const API = "http://127.0.0.1:8000/api";
+const API = "https://emergency-patient-management-system.onrender.com/api";
 
 const patientRows = document.getElementById("patientRows");
 const historyRows = document.getElementById("historyRows");
