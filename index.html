@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Patient Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Emergency Care</h1>
+            <p>Patient Management System</p>
+        </div>
+        <span class="live"><span></span> System Online</span>
+    </header>
+
+    <main>
+        <section class="welcome">
+            <div>
+                <p class="eyebrow">EMERGENCY DEPARTMENT</p>
+                <h2>Patient Overview</h2>
+                <p>Manage registrations, priorities and treatment history.</p>
+            </div>
+            <button onclick="loadPatients()">Refresh Data ↻</button>
+        </section>
+
+        <section class="stats">
+            <div class="stat">
+                <p>Total Patients</p>
+                <h2 id="totalCount">0</h2>
+            </div>
+            <div class="stat">
+                <p>Waiting</p>
+                <h2 id="waitingCount">0</h2>
+            </div>
+            <div class="stat">
+                <p>Treated</p>
+                <h2 id="treatedCount">0</h2>
+            </div>
+            <div class="stat">
+                <p>Critical Cases</p>
+                <h2 id="criticalCount">0</h2>
+            </div>
+        </section>
+
+        <section class="layout">
+            <div class="panel">
+                <h3>Register Patient</h3>
+                <p class="muted">Enter the patient's details below.</p>
+
+                <form id="patientForm">
+                    <label>Patient Name</label>
+                    <input id="name" required minlength="2" maxlength="80"
+                           placeholder="Enter full name">
+
+                    <label>Age</label>
+                    <input id="age" type="number" min="0" max="120"
+                           required placeholder="Enter age">
+
+                    <label>Emergency Level</label>
+                    <select id="level" required>
+                        <option value="1">Level 1 — Critical</option>
+                        <option value="2" selected>Level 2 — Urgent</option>
+                        <option value="3">Level 3 — Normal</option>
+                    </select>
+
+                    <label>Symptoms</label>
+                    <textarea id="symptoms" required minlength="2"
+                              maxlength="300" placeholder="Describe symptoms"></textarea>
+
+                    <button class="primary" type="submit">+ Register Patient</button>
+                </form>
+                <p id="formMessage" role="status"></p>
+            </div>
+
+            <div class="panel">
+                <div class="section-heading">
+                    <div>
+                        <h3>Patient Records</h3>
+                        <p class="muted">Search and manage registrations.</p>
+                    </div>
+                </div>
+
+                <div class="search">
+                    <input id="searchId" type="number" min="1"
+                           placeholder="Search by patient ID">
+                    <button onclick="searchPatient()">Search</button>
+                </div>
+                <p id="searchMessage" role="status"></p>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID / Patient</th>
+                                <th>Level</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="patientRows">
+                            <tr><td colspan="4">Loading patients...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <button class="primary treat" onclick="treatNext()">
+                    Treat Next Patient →
+                </button>
+                <p id="treatMessage" role="status"></p>
+            </div>
+        </section>
+
+        <section class="panel history-panel">
+            <h3>Treatment History</h3>
+            <p class="muted">Previously treated patients.</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Patient ID</th>
+                            <th>Name</th>
+                            <th>Emergency Level</th>
+                            <th>Symptoms</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyRows">
+                        <tr><td colspan="4">Loading history...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <footer>Emergency Care · DSA Course Project</footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
