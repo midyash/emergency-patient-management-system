@@ -402,3 +402,16 @@ footer {
         font-size: 27px;
     }
 }
+
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #9ca3af;
+}
+
+.footer span {
+    color: #ef4444;
+}
